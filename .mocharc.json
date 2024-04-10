@@ -1,0 +1,8 @@
+{
+	"exit": true,
+	"timeout": 10000,
+	"check-leaks": true,
+	"spec": [
+		"test/test.spec.js"
+	]
+}
