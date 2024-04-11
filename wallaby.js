@@ -1,18 +1,21 @@
 export default function () {
   return {
     files: [
-      'package.json',   // IMPORTANT
-      'src/**/*.js' // adjust if required
+      'package.json',
+      'src/**/*.js',
+			'test/setup.js',
     ],
-
     tests: [
-      'test/**/*.spec.js' // adjust if required
+      'test/**/*.spec.js'
     ],
-
     env: {
       type: 'node'
     },
-    
-    workers: { restart: true }  // IMPORTANT
+		setup (w) {
+      console.log('setup');
+			const path = require('path');
+			w.testFramework.addFile(path.resolve(process.cwd(), 'test/setup.js'));
+		},
+    workers: { restart: true }
   };
 };

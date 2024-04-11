@@ -2,7 +2,10 @@
 	"exit": true,
 	"timeout": 10000,
 	"check-leaks": true,
+	"file": [
+		"test/setup.js"
+	],
 	"spec": [
-		"test/test.ts"
+		"test/test.spec.js"
 	]
 }

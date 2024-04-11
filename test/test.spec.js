@@ -1,12 +1,12 @@
-import sinon from "sinon";
+import TTLCache from "@isaacs/ttlcache";
 import assert from "assert";
 
-describe('Array', function () {
-  const clock = sinon.useFakeTimers();
+describe('ttlcache', function () {
+  it('should remove expired element', async function () {
+    const cache = new TTLCache();
 
-  describe('#indexOf()', function () {
-    it('should return -1 when the value is not present', function () {
-      assert.equal([1, 2, 3].indexOf(4), -1);
-    });
+    cache.set('key', 'value', { ttl: 1000 });
+    await clock.tickAsync(2000);
+    assert.equal(cache.get('key'), undefined);
   });
 });
